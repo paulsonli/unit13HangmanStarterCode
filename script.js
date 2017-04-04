@@ -12,7 +12,9 @@ drawHangman();
 
 // This function draws the correct amount of underscores under hangman depending on the length of the word.
 function drawWord() {
-    secretWord.forEach(function(letter){
+    $("#word").empty();
+    
+    secretWord.forEach(function(){
         $("#word").append("_");
     });
 }
@@ -22,6 +24,15 @@ function drawHangman() {
 
 $(document).ready(function() {
 // Step 1 TASK: call the prepare game function and print the secret word to the console. Then run this program.
-prepareGame();
-console.log(secretWord);
+    prepareGame();
+    console.log(secretWord);
+    function onKeyDown(event) {
+  
+        console.log(event);
+        var letters = event.key;
+        var capLetters = letters.toUpperCase();
+        alert(capLetters);
+    }
+
+    $("body").keydown(onKeyDown);
 });
